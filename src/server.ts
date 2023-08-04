@@ -1,34 +1,11 @@
-import "dotenv/config";
-import path from "path";
-import "reflect-metadata";
-import { DataSource, DataSourceOptions } from "typeorm";
+import app from "./app";
+import { AppDataSource } from "./data-source";
 
-const dataSourceConfig = (): DataSourceOptions => {
-  const entitiesPath: string = path.join(__dirname, "./entities/**.{ts,js}");
-  const migrationPath: string = path.join(__dirname, "./migrations/**.{ts,js}");
+AppDataSource.initialize()
+  .then((): void => {
+    console.log("Database connected");
 
-  const nodeEnv: string | undefined = process.env.NODE_ENV;
-
-  if (nodeEnv === "test") {
-    return {
-      type: "sqlite",
-      database: ":memory:",
-      synchronize: true,
-      entities: [entitiesPath],
-    };
-  }
-
-  const dbUrl: string | undefined = process.env.DATABASE_URL;
-
-  if (!dbUrl) throw new Error("Missing env var: 'DATABASE_URL'");
-
-  return {
-    type: "postgres",
-    url: dbUrl,
-    logging: true,
-    entities: [entitiesPath],
-    migrations: [migrationPath],
-  };
-};
-
-export const AppDataSource = new DataSource(dataSourceConfig());
+    const PORT: number = Number(process.env.PORT || 3000);
+    app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+  })
+  .catch((error): void => console.error(error));
