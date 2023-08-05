@@ -13,7 +13,7 @@ userRouter.post(
   userControllers.create
 );
 
-userRouter.get("/:id", userControllers.read);
+userRouter.get("/:id", middlewares.userExists,userControllers.read);
 
 userRouter.patch(
   "/:id",
