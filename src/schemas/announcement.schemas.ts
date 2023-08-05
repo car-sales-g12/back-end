@@ -13,10 +13,17 @@ const announcementSchema = z.object({
   description: z.string().nullable(),
   cover_img: z.string(),
   createdAt: z.string().or(z.date()),
+  updatedAt: z.string().or(z.date()),
 });
 const announcementCreateSchema = announcementSchema.omit({
   id: true,
   createdAt: true,
+  updatedAt: true,
 });
+const announcementUpdateSchema = announcementCreateSchema.partial();
 
-export { announcementSchema, announcementCreateSchema };
+export {
+  announcementSchema,
+  announcementCreateSchema,
+  announcementUpdateSchema,
+};

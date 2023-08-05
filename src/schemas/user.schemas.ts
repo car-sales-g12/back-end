@@ -14,6 +14,7 @@ const userSchema = z.object({
   is_seller: z.boolean().nullable(),
   description: z.string().nullable(),
   createdAt: z.string().or(z.date()),
+  updatedAt: z.string().or(z.date()),
   addresses: z.array(addressSchema),
   announcements: z.array(announcementSchema),
   comments: z.array(commentSchema),
@@ -22,6 +23,7 @@ const userSchema = z.object({
 const userCreateSchema = userSchema.omit({
   id: true,
   createdAt: true,
+  updatedAt: true,
   addresses: true,
   announcements: true,
   comments: true,
