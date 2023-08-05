@@ -11,7 +11,7 @@ site para venda de carros
 
 1. Clone este repositório:
 
-   > git@github.com/GeneralTITO/desafio-full-stack-frontend.git
+   > git@github.com:car-sales-g12/back-end.git
 
 2. Instale as dependências do projeto:
 
