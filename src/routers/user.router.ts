@@ -1,7 +1,7 @@
 import { Router } from "express";
-import userControllers from "../controllers/user.controllers";
 import middlewares from "../middlewares";
 import { userCreateSchema } from "../schemas";
+import { userControllers } from "../controllers";
 
 export const userRouter: Router = Router();
 
