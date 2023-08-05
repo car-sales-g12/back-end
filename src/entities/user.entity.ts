@@ -5,14 +5,17 @@ import {
   OneToMany,
   CreateDateColumn,
   UpdateDateColumn,
+  BeforeInsert,
+  BeforeUpdate,
 } from "typeorm";
 import { Address } from "./address.entity";
 import { Announcement } from "./announcement.entity";
 import { Comment } from "./comment.entity";
+import { getRounds, hashSync } from "bcryptjs";
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn('increment')
+  @PrimaryGeneratedColumn("increment")
   id: number;
 
   @Column({ length: 250 })
@@ -27,7 +30,7 @@ export class User {
   @Column({ length: 25 })
   telephone: string;
 
-  @Column({ type: "date" })
+  @Column({ length: 20 })
   birth_date: string;
 
   @Column({ length: 250 })
@@ -37,7 +40,7 @@ export class User {
   is_seller: boolean;
 
   @Column({ type: "text", nullable: true })
-  description: string;
+  description: string | null;
 
   @CreateDateColumn({ type: "date" })
   createdAt: string;
@@ -53,4 +56,13 @@ export class User {
 
   @OneToMany(() => Comment, (comment) => comment.user)
   comments: Comment[];
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  hashPassword() {
+    const hasRounds: number = getRounds(this.password);
+    if (!hasRounds) {
+      this.password = hashSync(this.password, 10);
+    }
+  }
 }

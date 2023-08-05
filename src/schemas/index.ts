@@ -10,6 +10,7 @@ import {
   userCreateSchema,
   userReturnSchema,
   userUpdateschema,
+  userReturnWithAddressSchema,
 } from "./user.schemas";
 
 export {
@@ -25,4 +26,5 @@ export {
   announcementSchema,
   addressCreateSchema,
   addressSchema,
+  userReturnWithAddressSchema,
 };
