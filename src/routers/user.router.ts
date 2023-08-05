@@ -26,3 +26,11 @@ userRouter.patch(
   middlewares.uniqueCpf,
   userControllers.update
 );
+
+userRouter.delete(
+  "/:id",
+  middlewares.userExists,
+  middlewares.verifyToken,
+  middlewares.isOwner,
+  userControllers.destroy
+);
