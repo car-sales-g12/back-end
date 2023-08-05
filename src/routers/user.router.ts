@@ -2,7 +2,6 @@ import { Router } from "express";
 import middlewares from "../middlewares";
 import { userCreateSchema, userUpdateschema } from "../schemas";
 import { userControllers } from "../controllers";
-import { userExists } from "../middlewares/userExists.middleware";
 
 export const userRouter: Router = Router();
 
