@@ -22,7 +22,7 @@ export class Announcement {
   model: string;
 
   @Column({ length: 100 })
-  year: number;
+  year: string;
 
   @Column({ length: 100 })
   fuel: string;
