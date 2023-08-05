@@ -5,6 +5,7 @@ import {
 } from "./announcement.schemas";
 import { commentCreateSchema, commentSchema } from "./comment.schemas";
 import { imageCreateSchema, imageSchema } from "./image.schemas";
+import { sessionSchema } from "./session.schemas";
 import {
   userSchema,
   userCreateSchema,
@@ -27,4 +28,5 @@ export {
   addressCreateSchema,
   addressSchema,
   userReturnWithAddressSchema,
+  sessionSchema,
 };
