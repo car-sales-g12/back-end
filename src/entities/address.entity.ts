@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from "typeorm";
 import { User } from "./user.entity";
 
 @Entity()
@@ -23,6 +23,12 @@ export class Address {
 
   @Column({ length: 250 })
   zip_code: string;
+
+  @CreateDateColumn({ type: "date" })
+  createdAt: string;
+
+  @UpdateDateColumn({ type: "date" })
+  updatedAt: string;
 
   @ManyToOne(() => User, (user) => user.addresses)
   user: User;
