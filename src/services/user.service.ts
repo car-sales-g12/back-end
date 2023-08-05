@@ -40,8 +40,8 @@ const update = async (payload: UserUpdate, id: number): Promise<UserReturn> => {
   return user;
 };
 
-// const destroy = async (user: User): Promise<void> => {
-//   await userRepository.softRemove(user);
-// };
+const destroy = async (user: User): Promise<void> => {
+  await userRepository.remove(user);
+};
 
-export default { create, read, update };
+export default { create, read, update, destroy };

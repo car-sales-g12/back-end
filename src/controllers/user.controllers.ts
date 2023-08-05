@@ -19,9 +19,9 @@ const update = async (req: Request, res: Response): Promise<Response> => {
   return res.status(200).json(user);
 };
 
-// const destroy = async (req: Request, res: Response): Promise<Response> => {
-//   await userServices.destroy(res.locals.foundEntity);
-//   return res.status(204).json();
-// };
+const destroy = async (req: Request, res: Response): Promise<Response> => {
+  await userService.destroy(res.locals.foundEntity);
+  return res.status(204).json();
+};
 
-export default { create, read, update };
+export default { create, read, update, destroy };
