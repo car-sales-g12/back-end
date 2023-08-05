@@ -11,7 +11,7 @@ import { User } from "./user.entity";
 import { Comment } from "./comment.entity";
 import { Image } from "./image.entity";
 
-@Entity()
+@Entity('announcements')
 export class Announcement {
   @PrimaryGeneratedColumn()
   id: number;

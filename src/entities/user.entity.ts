@@ -13,7 +13,7 @@ import { Announcement } from "./announcement.entity";
 import { Comment } from "./comment.entity";
 import { getRounds, hashSync } from "bcryptjs";
 
-@Entity()
+@Entity("users")
 export class User {
   @PrimaryGeneratedColumn("increment")
   id: number;

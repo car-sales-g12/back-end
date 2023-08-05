@@ -23,25 +23,25 @@ const read = async (userId: number): Promise<UserReturnWithAddress> => {
   return userReturnWithAddressSchema.parse(user);
 };
 
-// const update = async (payload: UserUpdate, id: number): Promise<userReturn> => {
-//   const userFound: User | null = await userRepository.findOne({
-//     where: { id: id },
-//   });
+const update = async (payload: UserUpdate, id: number): Promise<UserReturn> => {
+  const userFound: User | null = await userRepository.findOne({
+    where: { id: id },
+  });
 
-//   const userUpdated: User = userRepository.create({
-//     ...userFound!,
-//     ...payload,
-//   });
+  const userUpdated: User = userRepository.create({
+    ...userFound!,
+    ...payload,
+  });
 
-//   await userRepository.save(userUpdated);
+  await userRepository.save(userUpdated);
 
-//   const user = userReturnSchema.parse(userUpdated);
+  const user = userReturnSchema.parse(userUpdated);
 
-//   return user;
-// };
+  return user;
+};
 
 // const destroy = async (user: User): Promise<void> => {
 //   await userRepository.softRemove(user);
 // };
 
-export default { create, read };
+export default { create, read, update };
