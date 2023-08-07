@@ -34,13 +34,13 @@ site para venda de carros
 ### POST /user
 Create a new user.
 
-### GET /user/:id
+### GET /user/:idUse
 Retrieve user information by ID.
 
-### PATCH /user/:id
+### PATCH /user/:idUser
 Update user information.
 
-### DELETE /user/:id
+### DELETE /user/:idUser
 Delete the user.
 
 ---
@@ -54,7 +54,7 @@ Create a new session (login).
 
 ## Announcement Router
 
-### POST /announcement/:id
+### POST /announcement/:idUser
 Create a new announcement.
 
 ### GET /announcement/:idAnnouncement
@@ -73,7 +73,7 @@ Delete the announcement.
 
 ## Comment Router
 
-### POST /comment/:id/:idAnnouncement
+### POST /comment/:idUser/:idAnnouncement
 Create a new comment.
 
 ### GET /comment/:idAnnouncement
