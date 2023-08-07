@@ -6,6 +6,14 @@ import {
   UserReturnWithAddress,
 } from "./user.interfaces";
 import { SessionCreate, SessionReturn } from "./session.interfaces";
+import {
+  AnnouncementCreate,
+  AnnouncementRepo,
+  AnnouncementReturnRead,
+  AnnouncementUpdate,
+  AnnouncementReturnCreate,
+} from "./announcement.interfaces";
+import { Pagination, PaginationParams } from "./pagination.interfaces";
 
 export {
   UserCreate,
@@ -15,4 +23,11 @@ export {
   UserReturnWithAddress,
   SessionCreate,
   SessionReturn,
+  AnnouncementCreate,
+  AnnouncementRepo,
+  AnnouncementReturnRead,
+  AnnouncementUpdate,
+  AnnouncementReturnCreate,
+  Pagination,
+  PaginationParams,
 };

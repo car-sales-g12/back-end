@@ -11,7 +11,7 @@ import { User } from "./user.entity";
 import { Comment } from "./comment.entity";
 import { Image } from "./image.entity";
 
-@Entity('announcements')
+@Entity("announcements")
 export class Announcement {
   @PrimaryGeneratedColumn()
   id: number;
@@ -34,14 +34,14 @@ export class Announcement {
   @Column({ length: 100 })
   color: string;
 
-  @Column("decimal", { precision: 10, scale: 2 })
-  value_fipe: number;
+  @Column({ default: false })
+  good_deal: boolean;
 
   @Column("decimal", { precision: 10, scale: 2 })
   value: number;
 
-  @Column({ type: "text" })
-  description: string;
+  @Column({ type: "text", nullable: true })
+  description: string | null | undefined;
 
   @Column()
   cover_img: string;

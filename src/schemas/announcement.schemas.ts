@@ -1,16 +1,23 @@
 import { z } from "zod";
+import { User } from "../entities";
+import {
+  userCreateSchema,
+  userReturnWithOutRelationsSchema,
+  userReturnSchema,
+  userSchema,
+} from "./user.schemas";
 
 const announcementSchema = z.object({
   id: z.number(),
-  brand: z.string().max(100),
-  model: z.string().max(100),
-  year: z.string().max(100),
-  fuel: z.string().max(100),
+  brand: z.string().min(2).max(100),
+  model: z.string().min(1).max(100),
+  year: z.string().min(2).max(100),
+  fuel: z.string().min(2).max(100),
   km: z.number().min(0).max(9999999999.99),
-  color: z.string().max(100),
-  value_fipe: z.number().min(0).max(9999999999.99),
+  color: z.string().min(2).max(100),
+  good_deal: z.boolean(),
   value: z.number().min(0).max(9999999999.99),
-  description: z.string().nullable(),
+  description: z.string().nullable().nullish(),
   cover_img: z.string(),
   createdAt: z.string().or(z.date()),
   updatedAt: z.string().or(z.date()),
@@ -21,9 +28,19 @@ const announcementCreateSchema = announcementSchema.omit({
   updatedAt: true,
 });
 const announcementUpdateSchema = announcementCreateSchema.partial();
+const announcementReturnCreateSchema = announcementSchema.extend({
+  user: userSchema.omit({ cpf: true, password: true }),
+});
+const announcementReturnReadSchema = announcementSchema.extend({
+  km: z.string(),
+  value: z.string(),
+  user: userSchema.omit({ cpf: true, password: true }),
+});
 
 export {
   announcementSchema,
   announcementCreateSchema,
+  announcementReturnCreateSchema,
+  announcementReturnReadSchema,
   announcementUpdateSchema,
 };
