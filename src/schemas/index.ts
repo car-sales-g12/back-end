@@ -6,7 +6,12 @@ import {
   announcementReturnCreateSchema,
   announcementUpdateSchema,
 } from "./announcement.schemas";
-import { commentCreateSchema, commentSchema } from "./comment.schemas";
+import {
+  commentCreateSchema,
+  commentSchema,
+  commentReturnSchema,
+  commentUpdateSchema,
+} from "./comment.schemas";
 import { imageCreateSchema, imageSchema } from "./image.schemas";
 import { sessionSchema } from "./session.schemas";
 import {
@@ -28,6 +33,8 @@ export {
   imageSchema,
   commentCreateSchema,
   commentSchema,
+  commentReturnSchema,
+  commentUpdateSchema,
   announcementCreateSchema,
   announcementSchema,
   addressCreateSchema,

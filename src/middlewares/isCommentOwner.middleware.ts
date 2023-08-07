@@ -1,19 +1,18 @@
 import { NextFunction, Request, Response } from "express";
 import { AppError } from "../errors";
-import { announcementRepository } from "../repositories";
 
-export const isAnnouncementOwner = async (
+export const isCommentOwner = async (
   req: Request,
   res: Response,
   next: NextFunction
 ): Promise<void> => {
   const idUser = Number(res.locals.decoded.sub);
 
-  const annoncement = res.locals.foundAnnouncement;
-  if (!annoncement) {
-    throw new AppError("Announcement not found.", 404);
+  const comment = res.locals.foundComment;
+  if (!comment) {
+    throw new AppError("Comment not found.", 404);
   }
-  if (annoncement.user.id !== idUser) {
+  if (comment.user.id !== idUser) {
     throw new AppError("Insufficient permissions", 403);
   }
 

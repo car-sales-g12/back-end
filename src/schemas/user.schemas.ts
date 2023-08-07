@@ -1,6 +1,5 @@
 import { z } from "zod";
 import { addressSchema } from "./address.schemas";
-import { announcementSchema } from "./announcement.schemas";
 import { commentSchema } from "./comment.schemas";
 
 const userSchema = z.object({
@@ -16,12 +15,9 @@ const userSchema = z.object({
   createdAt: z.string().or(z.date()),
   updatedAt: z.string().or(z.date()),
   addresses: z.array(addressSchema).nullable().nullish(),
-  comments: z.array(commentSchema).nullable().nullish(),
 });
 const userReturnWithOutRelationsSchema = userSchema.omit({
   address: true,
-  announcements: true,
-  comments: true,
   password: true,
   cpf: true,
 });
@@ -30,7 +26,6 @@ const userCreateSchema = userSchema.omit({
   createdAt: true,
   updatedAt: true,
   addresses: true,
-  announcements: true,
   comments: true,
 });
 const userReturnSchema = userSchema.omit({

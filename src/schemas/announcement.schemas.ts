@@ -1,11 +1,6 @@
 import { z } from "zod";
-import { User } from "../entities";
-import {
-  userCreateSchema,
-  userReturnWithOutRelationsSchema,
-  userReturnSchema,
-  userSchema,
-} from "./user.schemas";
+import { userSchema } from "./user.schemas";
+import { commentSchema } from "./comment.schemas";
 
 const announcementSchema = z.object({
   id: z.number(),
@@ -28,9 +23,12 @@ const announcementCreateSchema = announcementSchema.omit({
   updatedAt: true,
 });
 const announcementUpdateSchema = announcementCreateSchema.partial();
-const announcementReturnCreateSchema = announcementSchema.extend({
-  user: userSchema.omit({ cpf: true, password: true }),
-});
+const announcementReturnCreateSchema = announcementSchema
+  .extend({
+    user: userSchema.omit({ cpf: true, password: true }),
+    comments: commentSchema.array(),
+  })
+  .omit({ comments: true });
 const announcementReturnReadSchema = announcementSchema.extend({
   km: z.string(),
   value: z.string(),
