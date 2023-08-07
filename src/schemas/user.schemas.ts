@@ -15,11 +15,16 @@ const userSchema = z.object({
   description: z.string().nullable(),
   createdAt: z.string().or(z.date()),
   updatedAt: z.string().or(z.date()),
-  addresses: z.array(addressSchema),
-  announcements: z.array(announcementSchema),
-  comments: z.array(commentSchema),
+  addresses: z.array(addressSchema).nullable().nullish(),
+  comments: z.array(commentSchema).nullable().nullish(),
 });
-
+const userReturnWithOutRelationsSchema = userSchema.omit({
+  address: true,
+  announcements: true,
+  comments: true,
+  password: true,
+  cpf: true,
+});
 const userCreateSchema = userSchema.omit({
   id: true,
   createdAt: true,
@@ -37,7 +42,7 @@ const userReturnSchema = userSchema.omit({
 });
 
 const userReturnWithAddressSchema = userReturnSchema.extend({
-  addresses: addressSchema.array(),
+  addresses: z.array(addressSchema),
 });
 const userUpdateschema = userCreateSchema.partial();
 
@@ -47,4 +52,5 @@ export {
   userReturnSchema,
   userUpdateschema,
   userReturnWithAddressSchema,
+  userReturnWithOutRelationsSchema,
 };

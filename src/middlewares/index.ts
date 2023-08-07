@@ -1,3 +1,4 @@
+import { announcementExists } from "./announcementExists.middleware";
 import { handleError } from "./handleError.middleware";
 import { isOwner } from "./isOwner.middleware";
 import { uniqueCpf } from "./uniqueCpf.middleware";
@@ -14,4 +15,5 @@ export default {
   isOwner,
   userExists,
   verifyToken,
+  announcementExists,
 };
