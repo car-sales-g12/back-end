@@ -14,7 +14,11 @@ commentRouter.post(
   commentContollers.create
 );
 
-// userRouter.get("/:id", middlewares.userExists, userControllers.read);
+commentRouter.get(
+  "/:idAnnouncement",
+  middlewares.announcementExists,
+  commentContollers.read
+);
 
 // userRouter.patch(
 //   "/:id",

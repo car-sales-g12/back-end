@@ -6,19 +6,17 @@ import { Announcement, User } from "../entities";
 const create = async (req: Request, res: Response): Promise<Response> => {
   const user: User = res.locals.foundEntity;
   const announcement: Announcement = res.locals.foundAnnouncement;
-  const comment: Comment = await commentService.create(
-    req.body,
-    user,
-    announcement
-  );
+
+  const comment = await commentService.create(req.body, user, announcement);
+
   return res.status(201).json(comment);
 };
 
-// const read = async (req: Request, res: Response): Promise<Response> => {
-//   const userId: number = Number(req.params.id);
-//   const user = await userService.read(userId);
-//   return res.status(200).json(user);
-// };
+const read = async (req: Request, res: Response): Promise<Response> => {
+  const idAnnouncement: number = Number(req.params.idAnnouncement);
+  const comments = await commentService.read(idAnnouncement);
+  return res.status(200).json(comments);
+};
 
 // const update = async (req: Request, res: Response): Promise<Response> => {
 //   const id: number = Number(req.params.id);
@@ -31,4 +29,4 @@ const create = async (req: Request, res: Response): Promise<Response> => {
 //   return res.status(204).json();
 // };
 
-export default { create };
+export default { create, read };

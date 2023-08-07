@@ -18,13 +18,12 @@ const create = async (
   return commentReturnSchema.parse(comment);
 };
 
-// const read = async (commentId: number): Promise<commentReturnWithAddress> => {
-//   const comment = await commentRepository.findOne({
-//     where: { id: commentId },
-//     relations: { addresses: true },
-//   });
-//   return commentReturnWithAddressSchema.parse(comment);
-// };
+const read = async (idAnnouncement: number): Promise<Comment[]> => {
+  const comments = await commentRepository.find({
+    where: { announcement: { id: idAnnouncement } },
+  });
+  return comments;
+};
 
 // const update = async (
 //   payload: commentUpdate,
@@ -50,4 +49,4 @@ const create = async (
 //   await commentRepository.remove(comment);
 // };
 
-export default { create };
+export default { create, read };

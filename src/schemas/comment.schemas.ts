@@ -17,6 +17,7 @@ const commentReturnSchema = z.object({
   comment: z.string(),
   user: z.object({
     id: z.number(),
+    name:z.string()
   }),
   announcement: z.object({
     id: z.number(),
