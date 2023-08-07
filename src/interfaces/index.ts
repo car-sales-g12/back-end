@@ -13,6 +13,7 @@ import {
   AnnouncementUpdate,
   AnnouncementReturnCreate,
 } from "./announcement.interfaces";
+import { Pagination, PaginationParams } from "./pagination.interfaces";
 
 export {
   UserCreate,
@@ -27,4 +28,6 @@ export {
   AnnouncementReturnRead,
   AnnouncementUpdate,
   AnnouncementReturnCreate,
+  Pagination,
+  PaginationParams,
 };
