@@ -18,15 +18,15 @@ const read = async (req: Request, res: Response): Promise<Response> => {
   return res.status(200).json(comments);
 };
 
-// const update = async (req: Request, res: Response): Promise<Response> => {
-//   const id: number = Number(req.params.id);
-//   const user: UserReturn = await userService.update(req.body, id);
-//   return res.status(200).json(user);
-// };
+const update = async (req: Request, res: Response): Promise<Response> => {
+  const foundComment: Comment = res.locals.foundComment;
+  const comment = await commentService.update(req.body, foundComment);
+  return res.status(200).json(comment);
+};
 
-// const destroy = async (req: Request, res: Response): Promise<Response> => {
-//   await userService.destroy(res.locals.foundEntity);
-//   return res.status(204).json();
-// };
+const destroy = async (req: Request, res: Response): Promise<Response> => {
+  await commentService.destroy(res.locals.foundComment);
+  return res.status(204).json();
+};
 
-export default { create, read };
+export default { create, read, update, destroy };

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { userReturnSchema, userSchema } from "./user.schemas";
+import { userSchema } from "./user.schemas";
 import { announcementSchema } from "./announcement.schemas";
 
 const commentSchema = z.object({
@@ -17,7 +17,7 @@ const commentReturnSchema = z.object({
   comment: z.string(),
   user: z.object({
     id: z.number(),
-    name:z.string()
+    name: z.string(),
   }),
   announcement: z.object({
     id: z.number(),
@@ -30,5 +30,11 @@ const commentCreateSchema = commentSchema.omit({
   announcement: true,
   user: true,
 });
+const commentUpdateSchema = commentCreateSchema.partial();
 
-export { commentSchema, commentCreateSchema, commentReturnSchema };
+export {
+  commentSchema,
+  commentCreateSchema,
+  commentReturnSchema,
+  commentUpdateSchema,
+};

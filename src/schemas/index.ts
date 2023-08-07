@@ -10,6 +10,7 @@ import {
   commentCreateSchema,
   commentSchema,
   commentReturnSchema,
+  commentUpdateSchema,
 } from "./comment.schemas";
 import { imageCreateSchema, imageSchema } from "./image.schemas";
 import { sessionSchema } from "./session.schemas";
@@ -33,6 +34,7 @@ export {
   commentCreateSchema,
   commentSchema,
   commentReturnSchema,
+  commentUpdateSchema,
   announcementCreateSchema,
   announcementSchema,
   addressCreateSchema,

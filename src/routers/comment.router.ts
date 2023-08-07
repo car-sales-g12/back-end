@@ -1,7 +1,9 @@
 import { Router } from "express";
 import middlewares from "../middlewares";
-import { commentCreateSchema } from "../schemas";
+import { commentCreateSchema, commentUpdateSchema } from "../schemas";
 import commentContollers from "../controllers/comment.contollers";
+import { announcementControllers } from "../controllers";
+import { isCommentOwner } from "../middlewares/isCommentOwner.middleware";
 
 export const commentRouter: Router = Router();
 
@@ -20,21 +22,19 @@ commentRouter.get(
   commentContollers.read
 );
 
-// userRouter.patch(
-//   "/:id",
-//   middlewares.userExists,
-//   middlewares.verifyToken,
-//   middlewares.isOwner,
-//   middlewares.validateBody(userUpdateschema),
-//   middlewares.uniqueEmail,
-//   middlewares.uniqueCpf,
-//   userControllers.update
-// );
+commentRouter.patch(
+  "/:idComment",
+  middlewares.verifyToken,
+  middlewares.commentExists,
+  middlewares.isCommentOwner,
+  middlewares.validateBody(commentUpdateSchema),
+  commentContollers.update
+);
 
-// userRouter.delete(
-//   "/:id",
-//   middlewares.userExists,
-//   middlewares.verifyToken,
-//   middlewares.isOwner,
-//   userControllers.destroy
-// );
+commentRouter.delete(
+  "/:idComment",
+  middlewares.commentExists,
+  middlewares.verifyToken,
+  middlewares.isCommentOwner,
+  commentContollers.destroy
+);

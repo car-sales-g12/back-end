@@ -1,4 +1,4 @@
-import { CommentCreate, CommentReturn } from "../interfaces";
+import { CommentCreate, CommentReturn, CommentUpdate } from "../interfaces";
 import { Announcement, Comment, User } from "../entities";
 
 import { commentRepository } from "../repositories";
@@ -25,28 +25,22 @@ const read = async (idAnnouncement: number): Promise<Comment[]> => {
   return comments;
 };
 
-// const update = async (
-//   payload: commentUpdate,
-//   id: number
-// ): Promise<commentReturn> => {
-//   const commentFound: comment | null = await commentRepository.findOne({
-//     where: { id: id },
-//   });
+const update = async (
+  payload: CommentUpdate,
+  foundComment: Comment
+): Promise<CommentReturn> => {
+  const commentUpdated = commentRepository.create({
+    ...foundComment,
+    ...payload,
+  });
 
-//   const commentUpdated: comment = commentRepository.create({
-//     ...commentFound!,
-//     ...payload,
-//   });
+  await commentRepository.save(commentUpdated);
 
-//   await commentRepository.save(commentUpdated);
+  return commentReturnSchema.parse(commentUpdated);
+};
 
-//   const comment = commentReturnSchema.parse(commentUpdated);
+const destroy = async (comment: Comment): Promise<void> => {
+  await commentRepository.remove(comment);
+};
 
-//   return comment;
-// };
-
-// const destroy = async (comment: comment): Promise<void> => {
-//   await commentRepository.remove(comment);
-// };
-
-export default { create, read };
+export default { create, read, update, destroy };

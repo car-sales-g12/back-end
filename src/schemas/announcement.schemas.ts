@@ -23,10 +23,12 @@ const announcementCreateSchema = announcementSchema.omit({
   updatedAt: true,
 });
 const announcementUpdateSchema = announcementCreateSchema.partial();
-const announcementReturnCreateSchema = announcementSchema.extend({
-  user: userSchema.omit({ cpf: true, password: true }),
-  comments: commentSchema.array(),
-});
+const announcementReturnCreateSchema = announcementSchema
+  .extend({
+    user: userSchema.omit({ cpf: true, password: true }),
+    comments: commentSchema.array(),
+  })
+  .omit({ comments: true });
 const announcementReturnReadSchema = announcementSchema.extend({
   km: z.string(),
   value: z.string(),
