@@ -34,7 +34,7 @@ site para venda de carros
 
 Create a new user.
 
-### GET /user/:idUse
+### GET /user/:idUser
 
 Retrieve user information by ID.
 
