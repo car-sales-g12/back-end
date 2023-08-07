@@ -8,12 +8,8 @@ export const isAnnouncementOwner = async (
   next: NextFunction
 ): Promise<void> => {
   const idUser = Number(res.locals.decoded.sub);
-  const idAnnoncement = Number(req.params.id);
 
-  const annoncement = await announcementRepository.findOne({
-    where: { id: idAnnoncement },
-    relations: { user: true },
-  });
+  const annoncement = res.locals.foundAnnouncement;
   if (!annoncement) {
     throw new AppError("Announcement not found.", 404);
   }

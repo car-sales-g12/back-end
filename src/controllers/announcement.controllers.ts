@@ -16,7 +16,7 @@ const create = async (req: Request, res: Response): Promise<Response> => {
 };
 
 const readById = async (req: Request, res: Response): Promise<Response> => {
-  const announcementId: number = Number(req.params.id);
+  const announcementId: number = Number(req.params.idAnnouncement);
   const announcement: AnnouncementReturnRead =
     await announcementService.readById(announcementId);
   return res.status(200).json(announcement);
@@ -30,7 +30,7 @@ const read = async (req: Request, res: Response): Promise<Response> => {
 };
 
 const update = async (req: Request, res: Response): Promise<Response> => {
-  const id: number = Number(req.params.id);
+  const id: number = Number(req.params.idAnnouncement);
   const announcement: Announcement = await announcementService.update(
     req.body,
     id
@@ -39,7 +39,7 @@ const update = async (req: Request, res: Response): Promise<Response> => {
 };
 
 const destroy = async (req: Request, res: Response): Promise<Response> => {
-  await announcementService.destroy(res.locals.foundEntity);
+  await announcementService.destroy(res.locals.foundAnnouncement);
   return res.status(204).json();
 };
 

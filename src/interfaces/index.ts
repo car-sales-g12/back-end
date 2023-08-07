@@ -14,6 +14,12 @@ import {
   AnnouncementReturnCreate,
 } from "./announcement.interfaces";
 import { Pagination, PaginationParams } from "./pagination.interfaces";
+import {
+  CommentCreate,
+  CommentRepo,
+  CommentUpdate,
+  CommentReturn,
+} from "./comment.interfaces";
 
 export {
   UserCreate,
@@ -30,4 +36,8 @@ export {
   AnnouncementReturnCreate,
   Pagination,
   PaginationParams,
+  CommentCreate,
+  CommentRepo,
+  CommentUpdate,
+  CommentReturn,
 };

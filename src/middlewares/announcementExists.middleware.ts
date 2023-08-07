@@ -8,13 +8,16 @@ export const announcementExists = async (
   res: Response,
   next: NextFunction
 ): Promise<void> => {
-  const id: number = Number(req.params.id);
+  const idAnnouncement: number = Number(req.params.idAnnouncement);
 
-  const foundEntity: Announcement | null =
-    await announcementRepository.findOneBy({ id });
-  if (!foundEntity) throw new AppError("Announcement not found", 404);
+  const foundAnnouncement: Announcement | null =
+    await announcementRepository.findOne({
+      where: { id: idAnnouncement },
+      relations: { user: true },
+    });
+  if (!foundAnnouncement) throw new AppError("Announcement not found", 404);
 
-  res.locals = { ...res.locals, foundEntity };
+  res.locals = { ...res.locals, foundAnnouncement };
 
   return next();
 };

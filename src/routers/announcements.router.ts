@@ -16,7 +16,7 @@ announcementRouter.post(
 );
 
 announcementRouter.get(
-  "/:id",
+  "/:idAnnouncement",
   middlewares.announcementExists,
   announcementControllers.readById
 );
@@ -27,7 +27,7 @@ announcementRouter.get(
 );
 
 announcementRouter.patch(
-  "/:id",
+  "/:idAnnouncement",
   middlewares.announcementExists,
   middlewares.verifyToken,
   middlewares.isAnnouncementOwner,
@@ -36,7 +36,7 @@ announcementRouter.patch(
 );
 
 announcementRouter.delete(
-  "/:id",
+  "/:idAnnouncement",
   middlewares.announcementExists,
   middlewares.verifyToken,
   middlewares.isAnnouncementOwner,
