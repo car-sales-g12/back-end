@@ -4,6 +4,7 @@ import middlewares from "./middlewares";
 import {
   announcementRouter,
   commentRouter,
+  imageRouter,
   sessionRouter,
   userRouter,
 } from "./routers";
@@ -15,6 +16,7 @@ app.use("/user", userRouter);
 app.use("/login", sessionRouter);
 app.use("/announcement", announcementRouter);
 app.use("/comment", commentRouter);
+app.use("/image", imageRouter);
 
 app.use(middlewares.handleError);
 

@@ -5,5 +5,6 @@ const imageSchema = z.object({
   url: z.string(),
 });
 const imageCreateSchema = imageSchema.omit({ id: true });
+const imageUpdateSchema = imageCreateSchema.partial();
 
-export { imageSchema, imageCreateSchema };
+export { imageSchema, imageCreateSchema, imageUpdateSchema };
