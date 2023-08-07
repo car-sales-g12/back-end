@@ -1,21 +1,24 @@
-import { Image } from "../entities";
+import { Announcement, Image } from "../entities";
 import { imageRepository } from "../repositories";
-import { imageSchema } from "../schemas";
+import { imageCreateSchema, imageSchema } from "../schemas";
 import { ImageCreate } from "../interfaces/image.interfaces";
 
-const create = async (payload: ImageCreate): Promise<any> => {
-  const image: Image = imageRepository.create(payload);
+const create = async (
+  payload: ImageCreate,
+  announcement: Announcement
+): Promise<any> => {
+  const image: Image = imageRepository.create({ ...payload, announcement });
   await imageRepository.save(image);
   return imageSchema.parse(image);
 };
 
-// const read = async (userId: number): Promise<UserReturnWithAddress> => {
-//   const user = await userRepository.findOne({
-//     where: { id: userId },
-//     relations: { addresses: true },
-//   });
-//   return userReturnWithAddressSchema.parse(user);
-// };
+const read = async (idAnnouncement: number): Promise<Image[]> => {
+  const images = await imageRepository.find({
+    where: { announcement: { id: idAnnouncement } },
+  });
+  console.log();
+  return images;
+};
 
 // const update = async (payload: UserUpdate, id: number): Promise<UserReturn> => {
 //   const userFound: User | null = await userRepository.findOne({
@@ -38,4 +41,4 @@ const create = async (payload: ImageCreate): Promise<any> => {
 //   await userRepository.remove(user);
 // };
 
-export default { create };
+export default { create, read };

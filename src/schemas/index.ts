@@ -12,11 +12,7 @@ import {
   commentReturnSchema,
   commentUpdateSchema,
 } from "./comment.schemas";
-import {
-  imageCreateSchema,
-  imageSchema,
-  imageUpdateSchema,
-} from "./image.schemas";
+import { imageCreateSchema, imageSchema } from "./image.schemas";
 import { sessionSchema } from "./session.schemas";
 import {
   userSchema,
@@ -35,7 +31,6 @@ export {
   userReturnWithOutRelationsSchema,
   imageCreateSchema,
   imageSchema,
-  imageUpdateSchema,
   commentCreateSchema,
   commentSchema,
   commentReturnSchema,

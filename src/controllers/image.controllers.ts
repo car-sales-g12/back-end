@@ -1,18 +1,18 @@
 import { Request, Response } from "express";
 import { imageService } from "../services";
-
-import { Image } from "../entities";
+import { Announcement, Image } from "../entities";
 
 const create = async (req: Request, res: Response): Promise<Response> => {
-  const image: Image = await imageService.create(req.body);
+  const announcemente: Announcement = res.locals.foundAnnouncement;
+  const image: Image = await imageService.create(req.body, announcemente);
   return res.status(201).json(image);
 };
 
-// const read = async (req: Request, res: Response): Promise<Response> => {
-//   const userId: number = Number(req.params.id);
-//   const user = await userService.read(userId);
-//   return res.status(200).json(user);
-// };
+const read = async (req: Request, res: Response): Promise<Response> => {
+  const idAnnouncement: number = Number(req.params.idAnnouncement);
+  const images = await imageService.read(idAnnouncement);
+  return res.status(200).json(images);
+};
 
 // const update = async (req: Request, res: Response): Promise<Response> => {
 //   const id: number = Number(req.params.id);
@@ -25,4 +25,4 @@ const create = async (req: Request, res: Response): Promise<Response> => {
 //   return res.status(204).json();
 // };
 
-export default { create };
+export default { create, read };

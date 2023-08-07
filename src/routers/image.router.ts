@@ -14,18 +14,11 @@ imageRouter.post(
   imageControllers.create
 );
 
-// imageRouter.get("/:id", middlewares.userExists, imageControllers.read);
-
-// imageRouter.patch(
-//   "/:id",
-//   middlewares.userExists,
-//   middlewares.verifyToken,
-//   middlewares.isOwner,
-//   middlewares.validateBody(userUpdateschema),
-//   middlewares.uniqueEmail,
-//   middlewares.uniqueCpf,
-//   imageControllers.update
-// );
+imageRouter.get(
+  "/:idAnnouncement",
+  middlewares.announcementExists,
+  imageControllers.read
+);
 
 // imageRouter.delete(
 //   "/:id",
