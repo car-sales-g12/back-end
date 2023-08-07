@@ -6,7 +6,7 @@ import {
   Pagination,
   UserReturn,
 } from "../interfaces";
-import { User } from "../entities";
+import { Announcement, User } from "../entities";
 
 const create = async (req: Request, res: Response): Promise<Response> => {
   const user: User = res.locals.foundEntity;
@@ -31,13 +31,16 @@ const read = async (req: Request, res: Response): Promise<Response> => {
 
 const update = async (req: Request, res: Response): Promise<Response> => {
   const id: number = Number(req.params.id);
-  const user: UserReturn = await userService.update(req.body, id);
-  return res.status(200).json(user);
+  const announcement: Announcement = await announcementService.update(
+    req.body,
+    id
+  );
+  return res.status(200).json(announcement);
 };
 
 const destroy = async (req: Request, res: Response): Promise<Response> => {
-  await userService.destroy(res.locals.foundEntity);
+  await announcementService.destroy(res.locals.foundEntity);
   return res.status(204).json();
 };
 
-export default { create, readById, read, update };
+export default { create, readById, read, update, destroy };

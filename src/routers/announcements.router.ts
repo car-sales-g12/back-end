@@ -35,10 +35,10 @@ announcementRouter.patch(
   announcementControllers.update
 );
 
-// announcementRouter.delete(
-//   "/:id",
-//   middlewares.userExists,
-//   middlewares.verifyToken,
-//   middlewares.isOwner,
-//   userControllers.destroy
-// );
+announcementRouter.delete(
+  "/:id",
+  middlewares.announcementExists,
+  middlewares.verifyToken,
+  middlewares.isAnnouncementOwner,
+  announcementControllers.destroy
+);

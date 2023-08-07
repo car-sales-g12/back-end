@@ -15,6 +15,7 @@ import {
   announcementReturnCreateSchema,
   announcementReturnReadSchema,
 } from "../schemas";
+import { AnyZodObject } from "zod";
 
 const create = async (
   payload: AnnouncementCreate,
@@ -80,8 +81,8 @@ const update = async (
   return announcementUpdated;
 };
 
-// const destroy = async (user: User): Promise<void> => {
-//   await userRepository.remove(user);
-// };
+const destroy = async (announcement: Announcement): Promise<void> => {
+  await announcementRepository.remove(announcement);
+};
 
-export default { create, readById, readAll };
+export default { create, readById, readAll, update, destroy };
