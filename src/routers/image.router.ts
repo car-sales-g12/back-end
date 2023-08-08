@@ -20,10 +20,9 @@ imageRouter.get(
   imageControllers.read
 );
 
-// imageRouter.delete(
-//   "/:id",
-//   middlewares.userExists,
-//   middlewares.verifyToken,
-//   middlewares.isOwner,
-//   imageControllers.destroy
-// );
+imageRouter.delete(
+  "/:idImage",
+  middlewares.verifyToken,
+  middlewares.imageExistsAndIsOwner,
+  imageControllers.destroy
+);

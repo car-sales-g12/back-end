@@ -20,7 +20,7 @@ import {
   CommentUpdate,
   CommentReturn,
 } from "./comment.interfaces";
-import { ImageCreate, ImageRepo, ImageUpdate } from "./image.interfaces";
+import { ImageCreate, ImageRepo, ImageInterface } from "./image.interfaces";
 
 export {
   UserCreate,
@@ -43,5 +43,5 @@ export {
   CommentReturn,
   ImageCreate,
   ImageRepo,
-  ImageUpdate,
+  ImageInterface,
 };
