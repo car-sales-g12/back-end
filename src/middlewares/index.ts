@@ -1,4 +1,5 @@
 import { addressExists } from "./addressExists.middleware";
+import { alreadyHasAddress } from "./alreadyHasAddress.middleware";
 import { announcementExists } from "./announcementExists.middleware";
 import { isAnnouncementOwner } from "./announcementOwner.middleware";
 import { commentExists } from "./commentExist.middleware";
@@ -30,4 +31,5 @@ export default {
   addressExists,
   isAddressOwner,
   imageExistsAndIsOwner,
+  alreadyHasAddress,
 };

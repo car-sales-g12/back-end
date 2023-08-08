@@ -11,6 +11,7 @@ addressRouter.post(
   middlewares.userExists,
   middlewares.verifyToken,
   middlewares.isOwner,
+  middlewares.alreadyHasAddress,
   middlewares.validateBody(addressCreateSchema),
   addressControllers.create
 );
@@ -26,10 +27,10 @@ addressRouter.patch(
   addressControllers.update
 );
 
-// addressRouter.delete(
-//   "/:id",
-//   middlewares.userExists,
-//   middlewares.verifyToken,
-//   middlewares.isOwner,
-//   addressControllers.destroy
-// );
+addressRouter.delete(
+  "/:idAddress",
+  middlewares.addressExists,
+  middlewares.verifyToken,
+  middlewares.isAddressOwner,
+  addressControllers.destroy
+);

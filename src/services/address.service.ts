@@ -38,8 +38,8 @@ const update = async (
   return addressSchema.parse(addressUpdated);
 };
 
-// const destroy = async (user: User): Promise<void> => {
-//   await userRepository.remove(user);
-// };
+const destroy = async (address: Address): Promise<void> => {
+  await addressRepository.remove(address);
+};
 
-export default { create, read, update };
+export default { create, read, update, destroy };

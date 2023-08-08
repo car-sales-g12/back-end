@@ -14,7 +14,7 @@ export const addressExists = async (
     where: { id: idAddress },
     relations: { user: true },
   });
-  if (!foundAddress) throw new AppError("Announcement not found", 404);
+  if (!foundAddress) throw new AppError("Address not found", 404);
 
   res.locals = { ...res.locals, foundAddress };
 
