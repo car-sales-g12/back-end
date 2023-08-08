@@ -31,19 +31,15 @@ site para venda de carros
 ## User Router
 
 ### POST /user
-
 Create a new user.
 
-### GET /user/:idUser
-
+### GET /user/:id
 Retrieve user information by ID.
 
-### PATCH /user/:idUser
-
+### PATCH /user/:id
 Update user information.
 
-### DELETE /user/:idUser
-
+### DELETE /user/:id
 Delete the user.
 
 ---
@@ -51,49 +47,68 @@ Delete the user.
 ## Session Router
 
 ### POST /login
-
 Create a new session (login).
 
 ---
 
 ## Announcement Router
 
-### POST /announcement/:idUser
-
+### POST /announcement/:id
 Create a new announcement.
 
 ### GET /announcement/:idAnnouncement
-
 Retrieve announcement information by ID.
 
 ### GET /announcement
-
-Retrieve announcements. Suport query params (page, perPage)
+Retrieve announcements.
 
 ### PATCH /announcement/:idAnnouncement
-
 Update the announcement.
 
 ### DELETE /announcement/:idAnnouncement
-
 Delete the announcement.
 
 ---
 
 ## Comment Router
 
-### POST /comment/:idUser/:idAnnouncement
-
+### POST /comment/:id/:idAnnouncement
 Create a new comment.
 
 ### GET /comment/:idAnnouncement
-
 Retrieve comments for an announcement.
 
 ### PATCH /comment/:idComment
-
 Update a comment.
 
 ### DELETE /comment/:idComment
-
 Delete a comment.
+
+---
+
+## Image Router
+
+### POST /image/:idAnnouncement
+Upload an image for an announcement.
+
+### GET /image/:idAnnouncement
+Retrieve images for an announcement.
+
+### DELETE /image/:idImage
+Delete an image from an announcement.
+
+---
+
+## Address Router
+
+### POST /address/:id
+Create a new address for a user.
+
+### GET /address/:id
+Retrieve address for a user.
+
+### PATCH /address/:idAddress
+Update a user's address.
+
+### DELETE /address/:idAddress
+Delete a user's address.
