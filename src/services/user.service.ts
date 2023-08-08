@@ -5,7 +5,6 @@ import {
   UserReturnWithAddress,
 } from "../interfaces";
 import { User } from "../entities";
-
 import { userRepository } from "../repositories";
 import { userReturnSchema, userReturnWithAddressSchema } from "../schemas";
 
