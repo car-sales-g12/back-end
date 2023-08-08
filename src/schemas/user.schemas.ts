@@ -13,7 +13,7 @@ const userSchema = z.object({
   description: z.string().nullable(),
   createdAt: z.string().or(z.date()),
   updatedAt: z.string().or(z.date()),
-  addresses: addressSchema.nullable().nullish(),
+  addresses: z.array(addressSchema).nullable().nullish(),
 });
 const userReturnWithOutRelationsSchema = userSchema.omit({
   address: true,
@@ -36,7 +36,7 @@ const userReturnSchema = userSchema.omit({
 });
 
 const userReturnWithAddressSchema = userReturnSchema.extend({
-  addresses: addressSchema,
+  addresses: z.array(addressSchema),
 });
 const userUpdateschema = userCreateSchema.partial();
 

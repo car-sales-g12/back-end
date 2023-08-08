@@ -18,7 +18,7 @@ const create = async (payload: UserCreate): Promise<UserReturn> => {
 const read = async (userId: number): Promise<UserReturnWithAddress> => {
   const user = await userRepository.findOne({
     where: { id: userId },
-    relations: { address: true },
+    relations: { addresses: true },
   });
   return userReturnWithAddressSchema.parse(user);
 };

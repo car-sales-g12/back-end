@@ -12,7 +12,7 @@ export const userExists = async (
 
   const foundEntity: User | null = await userRepository.findOne({
     where: { id: id },
-    relations: { address: true },
+    relations: { addresses: true },
   });
   if (!foundEntity) throw new AppError("User not found", 404);
 

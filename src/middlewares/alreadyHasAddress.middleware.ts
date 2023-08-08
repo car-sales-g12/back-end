@@ -10,10 +10,10 @@ export const alreadyHasAddress = async (
   const idUser = Number(req.params.id);
   const userAddress: any = await userRepository.findOne({
     where: { id: idUser },
-    relations: { address: true },
+    relations: { addresses: true },
   });
-  console.log(userAddress);
-  if (userAddress.address) {
+
+  if (userAddress.addresses.length >= 1) {
     throw new AppError("User already has a address", 404);
   }
   return next();
