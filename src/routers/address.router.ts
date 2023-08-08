@@ -14,7 +14,7 @@ addressRouter.post(
   addressControllers.create
 );
 
-// addressRouter.get("/:id", middlewares.userExists, userControllers.read);
+addressRouter.get("/:id", middlewares.userExists, addressControllers.read);
 
 // addressRouter.patch(
 //   "/:id",
@@ -24,7 +24,7 @@ addressRouter.post(
 //   middlewares.validateBody(userUpdateschema),
 //   middlewares.uniqueEmail,
 //   middlewares.uniqueCpf,
-//   userControllers.update
+//   addressControllers.update
 // );
 
 // addressRouter.delete(
@@ -32,5 +32,5 @@ addressRouter.post(
 //   middlewares.userExists,
 //   middlewares.verifyToken,
 //   middlewares.isOwner,
-//   userControllers.destroy
+//   addressControllers.destroy
 // );

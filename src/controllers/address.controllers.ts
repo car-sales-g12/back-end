@@ -8,11 +8,11 @@ const create = async (req: Request, res: Response): Promise<Response> => {
   return res.status(201).json(address);
 };
 
-// const read = async (req: Request, res: Response): Promise<Response> => {
-//   const userId: number = Number(req.params.id);
-//   const user = await userService.read(userId);
-//   return res.status(200).json(user);
-// };
+const read = async (req: Request, res: Response): Promise<Response> => {
+  const userId: number = Number(req.params.id);
+  const address: Address = await addressService.read(userId);
+  return res.status(200).json(address);
+};
 
 // const update = async (req: Request, res: Response): Promise<Response> => {
 //   const id: number = Number(req.params.id);
@@ -25,4 +25,4 @@ const create = async (req: Request, res: Response): Promise<Response> => {
 //   return res.status(204).json();
 // };
 
-export default { create };
+export default { create, read };

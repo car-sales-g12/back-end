@@ -12,13 +12,12 @@ const create = async (
   return addressSchema.parse(address);
 };
 
-// const read = async (userId: number): Promise<UserReturnWithAddress> => {
-//   const user = await userRepository.findOne({
-//     where: { id: userId },
-//     relations: { addresses: true },
-//   });
-//   return userReturnWithAddressSchema.parse(user);
-// };
+const read = async (userId: number): Promise<any> => {
+  const address = await addressRepository.findOne({
+    where: { user: { id: userId } },
+  });
+  return address;
+};
 
 // const update = async (payload: UserUpdate, id: number): Promise<UserReturn> => {
 //   const userFound: User | null = await userRepository.findOne({
@@ -41,4 +40,4 @@ const create = async (
 //   await userRepository.remove(user);
 // };
 
-export default { create };
+export default { create, read };
