@@ -7,6 +7,7 @@ import {
   UpdateDateColumn,
   BeforeInsert,
   BeforeUpdate,
+  OneToOne,
 } from "typeorm";
 import { Address } from "./address.entity";
 import { Announcement } from "./announcement.entity";
@@ -48,8 +49,8 @@ export class User {
   @UpdateDateColumn({ type: "date" })
   updatedAt: string;
 
-  @OneToMany(() => Address, (address) => address.user)
-  addresses: Address[];
+  @OneToOne(() => Address, (address) => address.user)
+  address: Address | null | undefined;
 
   @OneToMany(() => Announcement, (announcement) => announcement.user)
   announcements: Announcement[];

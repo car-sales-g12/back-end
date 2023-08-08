@@ -10,7 +10,10 @@ export const userExists = async (
 ): Promise<void> => {
   const id: number = Number(req.params.id);
 
-  const foundEntity: User | null = await userRepository.findOneBy({ id });
+  const foundEntity: User | null = await userRepository.findOne({
+    where: { id: id },
+    relations: { address: true },
+  });
   if (!foundEntity) throw new AppError("User not found", 404);
 
   res.locals = { ...res.locals, foundEntity };

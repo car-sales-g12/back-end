@@ -16,7 +16,6 @@ const read = async (idAnnouncement: number): Promise<Image[]> => {
   const images = await imageRepository.find({
     where: { announcement: { id: idAnnouncement } },
   });
-  console.log();
   return images;
 };
 
