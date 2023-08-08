@@ -1,6 +1,5 @@
 import { CommentCreate, CommentReturn, CommentUpdate } from "../interfaces";
 import { Announcement, Comment, User } from "../entities";
-
 import { commentRepository } from "../repositories";
 import { commentReturnSchema } from "../schemas";
 
