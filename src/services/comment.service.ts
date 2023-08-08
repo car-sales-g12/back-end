@@ -2,7 +2,7 @@ import { CommentCreate, CommentReturn, CommentUpdate } from "../interfaces";
 import { Announcement, Comment, User } from "../entities";
 
 import { commentRepository } from "../repositories";
-import { commentReturnSchema, commentSchema } from "../schemas";
+import { commentReturnSchema } from "../schemas";
 
 const create = async (
   payload: CommentCreate,

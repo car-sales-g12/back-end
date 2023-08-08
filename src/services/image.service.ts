@@ -1,6 +1,6 @@
 import { Announcement, Image } from "../entities";
 import { imageRepository } from "../repositories";
-import { imageCreateSchema, imageSchema } from "../schemas";
+import { imageSchema } from "../schemas";
 import { ImageCreate, ImageInterface } from "../interfaces/image.interfaces";
 
 const create = async (

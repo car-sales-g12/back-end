@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { imageService } from "../services";
-import { Announcement, Image } from "../entities";
+import { Announcement } from "../entities";
 
 const create = async (req: Request, res: Response): Promise<Response> => {
   const announcement: Announcement = res.locals.foundAnnouncement;

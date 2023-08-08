@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
 import { AppError } from "../errors";
-import { announcementRepository } from "../repositories";
 
 export const isAnnouncementOwner = async (
   req: Request,

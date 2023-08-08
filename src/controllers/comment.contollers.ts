@@ -1,6 +1,6 @@
 import { Comment } from "./../entities/comment.entity";
 import { Request, Response } from "express";
-import { commentService, userService } from "../services";
+import { commentService } from "../services";
 import { Announcement, User } from "../entities";
 
 const create = async (req: Request, res: Response): Promise<Response> => {

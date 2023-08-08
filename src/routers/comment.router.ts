@@ -1,9 +1,7 @@
 import { Router } from "express";
 import middlewares from "../middlewares";
 import { commentCreateSchema, commentUpdateSchema } from "../schemas";
-import commentContollers from "../controllers/comment.contollers";
-import { announcementControllers } from "../controllers";
-import { isCommentOwner } from "../middlewares/isCommentOwner.middleware";
+import { commentContollers } from "../controllers";
 
 export const commentRouter: Router = Router();
 
