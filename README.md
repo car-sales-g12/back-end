@@ -53,7 +53,7 @@ Create a new session (login).
 
 ## Announcement Router
 
-### POST /announcement/:id
+### POST /announcement/:idUser
 Create a new announcement.
 
 ### GET /announcement/:idAnnouncement
@@ -101,7 +101,7 @@ Delete an image from an announcement.
 
 ## Address Router
 
-### POST /address/:id
+### POST /address/:idUser
 Create a new address for a user.
 
 ### GET /address/:id
