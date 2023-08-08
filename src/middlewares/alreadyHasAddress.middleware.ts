@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { Address } from "../entities";
-import { addressRepository, userRepository } from "../repositories";
+import { userRepository } from "../repositories";
 import { AppError } from "../errors";
 
 export const alreadyHasAddress = async (

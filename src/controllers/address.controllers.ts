@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { Address, User } from "../entities";
 import { addressService } from "../services";
-import { AddressReturn } from "../interfaces/address.interfaces";
+
 
 const create = async (req: Request, res: Response): Promise<Response> => {
   const user: User = res.locals.foundEntity;
