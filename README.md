@@ -60,7 +60,7 @@ Create a new announcement.
 Retrieve announcement information by ID.
 
 ### GET /announcement
-Retrieve announcements.
+Retrieve announcements. Supports query params.
 
 ### PATCH /announcement/:idAnnouncement
 Update the announcement.
@@ -72,7 +72,7 @@ Delete the announcement.
 
 ## Comment Router
 
-### POST /comment/:id/:idAnnouncement
+### POST /comment/:idUser/:idAnnouncement
 Create a new comment.
 
 ### GET /comment/:idAnnouncement
@@ -104,7 +104,7 @@ Delete an image from an announcement.
 ### POST /address/:idUser
 Create a new address for a user.
 
-### GET /address/:id
+### GET /address/:idUser
 Retrieve address for a user.
 
 ### PATCH /address/:idAddress
