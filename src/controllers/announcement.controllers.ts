@@ -1,10 +1,9 @@
 import { Request, Response } from "express";
-import { announcementService, userService } from "../services";
+import { announcementService } from "../services";
 import {
   AnnouncementReturnCreate,
   AnnouncementReturnRead,
   Pagination,
-  UserReturn,
 } from "../interfaces";
 import { Announcement, User } from "../entities";
 

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-import { Announcement, User } from "../entities";
-import { announcementRepository, userRepository } from "../repositories";
+import { Announcement } from "../entities";
+import { announcementRepository } from "../repositories";
 import { AppError } from "../errors";
 
 export const announcementExists = async (

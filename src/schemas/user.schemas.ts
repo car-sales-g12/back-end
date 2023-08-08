@@ -1,6 +1,5 @@
 import { z } from "zod";
 import { addressSchema } from "./address.schemas";
-import { commentSchema } from "./comment.schemas";
 
 const userSchema = z.object({
   id: z.number().positive(),
