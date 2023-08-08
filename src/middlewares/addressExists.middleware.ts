@@ -8,10 +8,10 @@ export const addressExists = async (
   res: Response,
   next: NextFunction
 ): Promise<void> => {
-  const id: number = Number(req.params.id);
+  const idAddress: number = Number(req.params.idAddress);
 
   const foundAddress: Address | null = await addressRepository.findOne({
-    where: { id: id },
+    where: { id: idAddress },
     relations: { user: true },
   });
   if (!foundAddress) throw new AppError("Announcement not found", 404);

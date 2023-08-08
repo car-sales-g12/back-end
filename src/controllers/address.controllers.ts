@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { Address, User } from "../entities";
 import { addressService } from "../services";
+import { AddressReturn } from "../interfaces/address.interfaces";
 
 const create = async (req: Request, res: Response): Promise<Response> => {
   const user: User = res.locals.foundEntity;
@@ -14,15 +15,15 @@ const read = async (req: Request, res: Response): Promise<Response> => {
   return res.status(200).json(address);
 };
 
-// const update = async (req: Request, res: Response): Promise<Response> => {
-//   const id: number = Number(req.params.id);
-//   const user: UserReturn = await userService.update(req.body, id);
-//   return res.status(200).json(user);
-// };
+const update = async (req: Request, res: Response): Promise<Response> => {
+  const addressFound: Address = res.locals.foundAddress;
+  const address = await addressService.update(req.body, addressFound);
+  return res.status(200).json(address);
+};
 
 // const destroy = async (req: Request, res: Response): Promise<Response> => {
 //   await userService.destroy(res.locals.foundEntity);
 //   return res.status(204).json();
 // };
 
-export default { create, read };
+export default { create, read, update };

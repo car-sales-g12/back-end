@@ -1,5 +1,9 @@
-import { User } from "../entities";
-import { AddressCreate, AddressReturn } from "../interfaces/address.interfaces";
+import { Address, User } from "../entities";
+import {
+  AddressCreate,
+  AddressReturn,
+  AddressUpdate,
+} from "../interfaces/address.interfaces";
 import { addressRepository } from "../repositories";
 import { addressSchema } from "../schemas";
 
@@ -19,25 +23,23 @@ const read = async (userId: number): Promise<any> => {
   return address;
 };
 
-// const update = async (payload: UserUpdate, id: number): Promise<UserReturn> => {
-//   const userFound: User | null = await userRepository.findOne({
-//     where: { id: id },
-//   });
+const update = async (
+  payload: AddressUpdate,
 
-//   const userUpdated: User = userRepository.create({
-//     ...userFound!,
-//     ...payload,
-//   });
+  address: Address
+): Promise<AddressReturn> => {
+  const addressUpdated: Address = addressRepository.create({
+    ...address,
+    ...payload,
+  });
 
-//   await userRepository.save(userUpdated);
+  await addressRepository.save(addressUpdated);
 
-//   const user = userReturnSchema.parse(userUpdated);
-
-//   return user;
-// };
+  return addressSchema.parse(addressUpdated);
+};
 
 // const destroy = async (user: User): Promise<void> => {
 //   await userRepository.remove(user);
 // };
 
-export default { create, read };
+export default { create, read, update };
