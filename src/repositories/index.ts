@@ -1,3 +1,4 @@
+import addressRepository from "./address.repository";
 import announcementRepository from "./announcement.repository";
 import commentRepository from "./comment.repository";
 import imageRepository from "./image.repository";
@@ -8,4 +9,5 @@ export {
   announcementRepository,
   commentRepository,
   imageRepository,
+  addressRepository,
 };

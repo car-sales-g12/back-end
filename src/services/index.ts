@@ -1,3 +1,4 @@
+import addressService from "./address.service";
 import announcementService from "./announcement.service";
 import commentService from "./comment.service";
 import imageService from "./image.service";
@@ -10,4 +11,5 @@ export {
   announcementService,
   commentService,
   imageService,
+  addressService,
 };
