@@ -9,8 +9,6 @@ export const addressRouter: Router = Router();
 addressRouter.post(
   "/:id",
   middlewares.userExists,
-  middlewares.verifyToken,
-  middlewares.isOwner,
   middlewares.alreadyHasAddress,
   middlewares.validateBody(addressCreateSchema),
   addressControllers.create
