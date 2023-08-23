@@ -11,6 +11,7 @@ import {
   commentSchema,
   commentReturnSchema,
   commentUpdateSchema,
+  commentReturnArraySchema,
 } from "./comment.schemas";
 import { imageCreateSchema, imageSchema } from "./image.schemas";
 import { sessionSchema } from "./session.schemas";
@@ -44,4 +45,5 @@ export {
   addressSchema,
   userReturnWithAddressSchema,
   sessionSchema,
+  commentReturnArraySchema,
 };
