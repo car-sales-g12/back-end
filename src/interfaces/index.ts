@@ -19,6 +19,7 @@ import {
   CommentRepo,
   CommentUpdate,
   CommentReturn,
+  CommentArrayReturn,
 } from "./comment.interfaces";
 import { ImageCreate, ImageRepo, ImageInterface } from "./image.interfaces";
 
@@ -41,6 +42,7 @@ export {
   CommentRepo,
   CommentUpdate,
   CommentReturn,
+  CommentArrayReturn,
   ImageCreate,
   ImageRepo,
   ImageInterface,

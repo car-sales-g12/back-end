@@ -1,6 +1,10 @@
 import { Router } from "express";
 import middlewares from "../middlewares";
-import { userCreateSchema, userUpdateschema } from "../schemas";
+import {
+  perfilPatchSchema,
+  userCreateSchema,
+  userUpdateschema,
+} from "../schemas";
 import { userControllers } from "../controllers";
 
 export const userRouter: Router = Router();
@@ -14,6 +18,15 @@ userRouter.post(
 );
 
 userRouter.get("/:id", middlewares.userExists, userControllers.read);
+
+userRouter.patch(
+  "/perfilImg/:id",
+  middlewares.userExists,
+  middlewares.verifyToken,
+  middlewares.isOwner,
+  middlewares.validateBody(perfilPatchSchema),
+  userControllers.perfilPatch
+);
 
 userRouter.patch(
   "/:id",

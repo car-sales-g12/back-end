@@ -22,6 +22,7 @@ import {
   userUpdateschema,
   userReturnWithAddressSchema,
   userReturnWithOutRelationsSchema,
+  perfilPatchSchema,
 } from "./user.schemas";
 
 export {
@@ -46,4 +47,5 @@ export {
   userReturnWithAddressSchema,
   sessionSchema,
   commentReturnArraySchema,
+  perfilPatchSchema,
 };
