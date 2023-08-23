@@ -12,6 +12,7 @@ import { Address } from "./address.entity";
 import { Announcement } from "./announcement.entity";
 import { Comment } from "./comment.entity";
 import { getRounds, hashSync } from "bcryptjs";
+import { text } from "express";
 
 @Entity("users")
 export class User {
@@ -38,6 +39,9 @@ export class User {
 
   @Column({ default: false })
   is_seller: boolean;
+
+  @Column({ nullable: true, type: "text" })
+  perfilImg: string | null;
 
   @Column({ type: "text", nullable: true })
   description: string | null;

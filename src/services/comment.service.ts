@@ -1,7 +1,7 @@
-import { CommentCreate, CommentReturn, CommentUpdate } from "../interfaces";
+import { CommentArrayReturn, CommentCreate, CommentReturn, CommentUpdate } from "../interfaces";
 import { Announcement, Comment, User } from "../entities";
 import { commentRepository } from "../repositories";
-import { commentReturnSchema } from "../schemas";
+import { commentReturnArraySchema, commentReturnSchema } from "../schemas";
 
 const create = async (
   payload: CommentCreate,
@@ -17,11 +17,12 @@ const create = async (
   return commentReturnSchema.parse(comment);
 };
 
-const read = async (idAnnouncement: number): Promise<Comment[]> => {
+const read = async (idAnnouncement: number): Promise<CommentArrayReturn> => {
   const comments = await commentRepository.find({
     where: { announcement: { id: idAnnouncement } },
+    relations: { user: true },
   });
-  return comments;
+  return commentReturnArraySchema.parse(comments);
 };
 
 const update = async (

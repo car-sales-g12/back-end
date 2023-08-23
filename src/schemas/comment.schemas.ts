@@ -18,11 +18,16 @@ const commentReturnSchema = z.object({
   user: z.object({
     id: z.number(),
     name: z.string(),
+    perfilImg: z.string().nullable(),
   }),
   announcement: z.object({
     id: z.number(),
   }),
 });
+const commentReturnArraySchema = commentReturnSchema
+  .omit({ announcement: true })
+  .array();
+
 const commentCreateSchema = commentSchema.omit({
   id: true,
   createdAt: true,
@@ -37,4 +42,5 @@ export {
   commentCreateSchema,
   commentReturnSchema,
   commentUpdateSchema,
+  commentReturnArraySchema,
 };
