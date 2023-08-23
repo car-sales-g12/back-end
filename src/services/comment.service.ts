@@ -1,4 +1,9 @@
-import { CommentArrayReturn, CommentCreate, CommentReturn, CommentUpdate } from "../interfaces";
+import {
+  CommentArrayReturn,
+  CommentCreate,
+  CommentReturn,
+  CommentUpdate,
+} from "../interfaces";
 import { Announcement, Comment, User } from "../entities";
 import { commentRepository } from "../repositories";
 import { commentReturnArraySchema, commentReturnSchema } from "../schemas";
