@@ -7,6 +7,13 @@ const create = async (req: Request, res: Response): Promise<Response> => {
   return res.status(201).json(user);
 };
 
+const perfilPatch = async (req: Request, res: Response): Promise<Response> => {
+  const userEntity = res.locals.foundEntity;
+  const img: string = req.body.perfilImg;
+  const user: UserReturn = await userService.patchImg(userEntity, img);
+  return res.status(201).json(user);
+};
+
 const read = async (req: Request, res: Response): Promise<Response> => {
   const userId: number = Number(req.params.id);
   const user = await userService.read(userId);
@@ -24,4 +31,30 @@ const destroy = async (req: Request, res: Response): Promise<Response> => {
   return res.status(204).json();
 };
 
-export default { create, read, update, destroy };
+const sendResetEmailPassword = async (req: Request, res: Response) => {
+  const { email } = req.body;
+  await userService.sendResetEmailPassword(email);
+
+  return res.json({
+    message: `token send`,
+  });
+};
+
+const resetPassword = async (req: Request, res: Response) => {
+  const { password } = req.body;
+  const { token } = req.params;
+
+  await userService.resetPassword(password, token);
+
+  res.json({ message: "password change with sucess" });
+};
+
+export default {
+  create,
+  read,
+  update,
+  destroy,
+  perfilPatch,
+  sendResetEmailPassword,
+  resetPassword,
+};

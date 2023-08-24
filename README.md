@@ -39,6 +39,9 @@ Retrieve user information by ID.
 ### PATCH /user/:id
 Update user information.
 
+### PATCH /user/perfilImg/:id
+Update user perfil image.
+
 ### DELETE /user/:id
 Delete the user.
 

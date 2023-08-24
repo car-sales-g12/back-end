@@ -10,7 +10,9 @@ const userSchema = z.object({
   birth_date: z.string(),
   password: z.string().max(250).min(5),
   is_seller: z.boolean(),
+  perfilImg: z.string().nullable(),
   description: z.string().nullable(),
+  reset_token: z.string().nullable().default(null),
   createdAt: z.string().or(z.date()),
   updatedAt: z.string().or(z.date()),
   addresses: z.array(addressSchema).nullable().nullish(),
@@ -20,12 +22,14 @@ const userReturnWithOutRelationsSchema = userSchema.omit({
   password: true,
   cpf: true,
 });
+const perfilPatchSchema = z.object({ perfilImg: z.string() });
 const userCreateSchema = userSchema.omit({
   id: true,
   createdAt: true,
   updatedAt: true,
   addresses: true,
   comments: true,
+  perfilImg: true,
 });
 const userReturnSchema = userSchema.omit({
   password: true,
@@ -47,4 +51,5 @@ export {
   userUpdateschema,
   userReturnWithAddressSchema,
   userReturnWithOutRelationsSchema,
+  perfilPatchSchema,
 };

@@ -1,10 +1,11 @@
 import { Announcement } from "../entities";
+import { AnnouncementReturnRead } from "./announcement.interfaces";
 
 interface Pagination {
   prevPage: string | null;
   nextPage: string | null;
   count: number;
-  data: Array<Announcement>;
+  data: Array<AnnouncementReturnRead>;
 }
 
 interface PaginationParams {

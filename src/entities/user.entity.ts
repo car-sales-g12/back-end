@@ -39,6 +39,9 @@ export class User {
   @Column({ default: false })
   is_seller: boolean;
 
+  @Column({ nullable: true, type: "text" })
+  perfilImg: string | null;
+
   @Column({ type: "text", nullable: true })
   description: string | null;
 
@@ -47,6 +50,9 @@ export class User {
 
   @UpdateDateColumn({ type: "date" })
   updatedAt: string;
+
+  @Column({type: "text", nullable: true, default: null})
+  reset_token: string | null ;
 
   @OneToMany(() => Address, (address) => address.user)
   addresses: Address[];

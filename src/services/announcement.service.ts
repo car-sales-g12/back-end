@@ -15,6 +15,7 @@ import {
   announcementReturnCreateSchema,
   announcementReturnReadSchema,
 } from "../schemas";
+import { arrayAnnouncementReturnWithUser } from "../schemas/announcement.schemas";
 
 const create = async (
   payload: AnnouncementCreate,
@@ -38,6 +39,21 @@ const readById = async (id: number): Promise<AnnouncementReturnRead> => {
   return announcementReturnReadSchema.parse(announcement);
 };
 
+const listByUser = async (
+  userId: number
+): Promise<AnnouncementReturnRead[]> => {
+  try {
+    const announcements: AnnouncementReturnRead[] =
+      await announcementRepository.find({
+        where: { user: { id: userId } },
+        relations: ["user"],
+      });
+    return announcements;
+  } catch (error) {
+    throw new Error("An error occurred while fetching announcements.");
+  }
+};
+
 const readAll = async ({
   page,
   perPage,
@@ -49,15 +65,16 @@ const readAll = async ({
   const [products, count]: [Announcement[], number] =
     await announcementRepository.findAndCount({
       order: { [sort]: order },
-      skip: page, // offset
-      take: perPage, // limit
+      skip: page,
+      take: perPage,
+      relations: { user: true },
     });
-
+  const parsedProducts = arrayAnnouncementReturnWithUser.parse(products);
   return {
     prevPage: page <= 1 ? null : prevPage,
     nextPage: count - page <= perPage ? null : nextPage,
     count,
-    data: products,
+    data: parsedProducts,
   };
 };
 
@@ -84,4 +101,4 @@ const destroy = async (announcement: Announcement): Promise<void> => {
   await announcementRepository.remove(announcement);
 };
 
-export default { create, readById, readAll, update, destroy };
+export default { create, readById, readAll, update, destroy, listByUser };

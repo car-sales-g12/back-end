@@ -11,6 +11,7 @@ const announcementSchema = z.object({
   km: z.number().min(0).max(9999999999.99),
   color: z.string().min(2).max(100),
   good_deal: z.boolean(),
+  active: z.boolean(),
   value: z.number().min(0).max(9999999999.99),
   description: z.string().nullable().nullish(),
   cover_img: z.string(),
@@ -30,10 +31,11 @@ const announcementReturnCreateSchema = announcementSchema
   })
   .omit({ comments: true });
 const announcementReturnReadSchema = announcementSchema.extend({
-  km: z.string(),
-  value: z.string(),
+  km: z.number().or(z.string()),
+  value: z.number().or(z.string()),
   user: userSchema.omit({ cpf: true, password: true }),
 });
+const arrayAnnouncementReturnWithUser = announcementReturnReadSchema.array();
 
 export {
   announcementSchema,
@@ -41,4 +43,5 @@ export {
   announcementReturnCreateSchema,
   announcementReturnReadSchema,
   announcementUpdateSchema,
+  arrayAnnouncementReturnWithUser,
 };

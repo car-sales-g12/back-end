@@ -28,6 +28,18 @@ const read = async (req: Request, res: Response): Promise<Response> => {
   return res.status(200).json(pagination);
 };
 
+const listByUserController = async (req: Request, res: Response): Promise<Response> => {
+  const userId: number = Number(req.params.userId);
+
+  try {
+    const announcements: AnnouncementReturnRead[] =
+      await announcementService.listByUser(userId);
+    return res.status(200).json(announcements);
+  } catch (error) {
+    return res.status(500).json({ error: "An error occurred while fetching announcements." });
+  }
+};
+
 const update = async (req: Request, res: Response): Promise<Response> => {
   const id: number = Number(req.params.idAnnouncement);
   const announcement: Announcement = await announcementService.update(
@@ -42,4 +54,5 @@ const destroy = async (req: Request, res: Response): Promise<Response> => {
   return res.status(204).json();
 };
 
-export default { create, readById, read, update, destroy };
+
+export default { create, readById, read, update, destroy, listByUserController };
