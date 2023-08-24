@@ -13,4 +13,10 @@ type UserReturnWithAddress = z.infer<typeof userReturnWithAddressSchema>;
 type UserUpdate = DeepPartial<User>;
 type UserRepo = Repository<User>;
 
-export { UserCreate, UserReturn, UserUpdate, UserRepo, UserReturnWithAddress };
+interface IEmailRequest {
+  to: string,
+  subject: string,
+  text: string
+}
+
+export { UserCreate, UserReturn, UserUpdate, UserRepo, UserReturnWithAddress, IEmailRequest };

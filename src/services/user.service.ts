@@ -7,6 +7,10 @@ import {
 import { User } from "../entities";
 import { userRepository } from "../repositories";
 import { userReturnSchema, userReturnWithAddressSchema } from "../schemas";
+import { AppError } from "../errors";
+import { randomUUID } from "crypto";
+import { emailService } from "../configs/sendEmail.configs";
+import { hashSync } from "bcryptjs";
 
 const create = async (payload: UserCreate): Promise<UserReturn> => {
   const user: User = userRepository.create(payload);
@@ -51,4 +55,53 @@ const destroy = async (user: User): Promise<void> => {
   await userRepository.remove(user);
 };
 
-export default { create, read, update, destroy, patchImg };
+const sendResetEmailPassword = async (email: string) => {
+  const userUpdated: User | null = await userRepository.findOne({
+    where: { email: email },
+  });
+
+  if (!userUpdated) {
+    throw new AppError("User not found", 404);
+  }
+
+  const resetToken = randomUUID();
+
+  userUpdated.reset_token = resetToken;
+
+  await userRepository.save(userUpdated);
+
+  const resetPasswordTemplete = emailService.resetPasswordTemplete(
+    userUpdated.email,
+    userUpdated.name,
+    resetToken
+  );
+
+  await emailService.sendEmail(resetPasswordTemplete);
+};
+
+const resetPassword = async (passsword: string, resetToken: string) => {
+  const user: User | null = await userRepository.findOne({
+    where: {
+      reset_token: resetToken,
+    },
+  });
+
+  if (!user) {
+    throw new AppError("User not found", 404);
+  }
+
+  user.password = hashSync(passsword, 10);
+  user.reset_token = null;
+
+  await userRepository.save(user);
+};
+
+export default {
+  create,
+  read,
+  update,
+  destroy,
+  patchImg,
+  sendResetEmailPassword,
+  resetPassword,
+};

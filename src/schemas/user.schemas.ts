@@ -12,6 +12,7 @@ const userSchema = z.object({
   is_seller: z.boolean(),
   perfilImg: z.string().nullable(),
   description: z.string().nullable(),
+  reset_token: z.string().nullable().default(null),
   createdAt: z.string().or(z.date()),
   updatedAt: z.string().or(z.date()),
   addresses: z.array(addressSchema).nullable().nullish(),

@@ -46,3 +46,7 @@ userRouter.delete(
   middlewares.isOwner,
   userControllers.destroy
 );
+
+userRouter.post("/resetPassword", userControllers.sendResetEmailPassword);
+
+userRouter.patch("/resetPassword/:token", userControllers.resetPassword);

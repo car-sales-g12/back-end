@@ -12,7 +12,6 @@ import { Address } from "./address.entity";
 import { Announcement } from "./announcement.entity";
 import { Comment } from "./comment.entity";
 import { getRounds, hashSync } from "bcryptjs";
-import { text } from "express";
 
 @Entity("users")
 export class User {
@@ -51,6 +50,9 @@ export class User {
 
   @UpdateDateColumn({ type: "date" })
   updatedAt: string;
+
+  @Column({type: "text", nullable: true, default: null})
+  reset_token: string | null ;
 
   @OneToMany(() => Address, (address) => address.user)
   addresses: Address[];
