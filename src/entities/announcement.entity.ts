@@ -37,6 +37,9 @@ export class Announcement {
   @Column({ default: false })
   good_deal: boolean;
 
+  @Column({ default: true })
+  active: boolean;
+
   @Column("decimal", { precision: 10, scale: 2 })
   value: number;
 
