@@ -14,6 +14,8 @@ announcementRouter.post(
   announcementControllers.create
 );
 
+announcementRouter.get("/user/:userId", announcementControllers.listByUserController)
+
 announcementRouter.get(
   "/:idAnnouncement",
   middlewares.announcementExists,
@@ -41,3 +43,5 @@ announcementRouter.delete(
   middlewares.isAnnouncementOwner,
   announcementControllers.destroy
 );
+
+

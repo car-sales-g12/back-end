@@ -30,8 +30,8 @@ const announcementReturnCreateSchema = announcementSchema
   })
   .omit({ comments: true });
 const announcementReturnReadSchema = announcementSchema.extend({
-  km: z.string(),
-  value: z.string(),
+  km: z.number(),
+  value: z.number(),
   user: userSchema.omit({ cpf: true, password: true }),
 });
 

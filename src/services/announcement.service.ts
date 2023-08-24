@@ -15,6 +15,7 @@ import {
   announcementReturnCreateSchema,
   announcementReturnReadSchema,
 } from "../schemas";
+import { Repository, getRepository } from "typeorm";
 
 const create = async (
   payload: AnnouncementCreate,
@@ -36,6 +37,19 @@ const readById = async (id: number): Promise<AnnouncementReturnRead> => {
     },
   }))!;
   return announcementReturnReadSchema.parse(announcement);
+};
+
+const listByUser = async (userId: number): Promise<AnnouncementReturnRead[]> => {
+  try {
+    const announcements: AnnouncementReturnRead[] =
+      await announcementRepository.find({
+        where: { user: { id: userId } }, 
+        relations: ["user"], 
+      });
+    return announcements;
+  } catch (error) {
+    throw new Error("An error occurred while fetching announcements.");
+  }
 };
 
 const readAll = async ({
@@ -84,4 +98,4 @@ const destroy = async (announcement: Announcement): Promise<void> => {
   await announcementRepository.remove(announcement);
 };
 
-export default { create, readById, readAll, update, destroy };
+export default { create, readById, readAll, update, destroy, listByUser };
