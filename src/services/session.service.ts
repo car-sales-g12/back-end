@@ -21,7 +21,7 @@ const create = async ({
     throw new AppError("Invalid credentials", 401);
   }
 
-  const token: string = sign({ id: foundUser.id }, process.env.SECRET_KEY!, {
+  const token: string = sign({ id: foundUser.id, is_seller: foundUser.is_seller }, process.env.SECRET_KEY!, {
     subject: foundUser.id.toString(),
     expiresIn: process.env.EXPIRES_IN!,
   });
