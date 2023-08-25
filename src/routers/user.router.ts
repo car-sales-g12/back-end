@@ -6,6 +6,7 @@ import {
   userUpdateschema,
 } from "../schemas";
 import { userControllers } from "../controllers";
+import { emailSchema, passwordSchema } from "../schemas/resetPassword";
 
 export const userRouter: Router = Router();
 
@@ -47,6 +48,9 @@ userRouter.delete(
   userControllers.destroy
 );
 
-userRouter.post("/resetPassword", userControllers.sendResetEmailPassword);
 
-userRouter.patch("/resetPassword/:token", userControllers.resetPassword);
+userRouter.post("/resetPassword", middlewares.validateBody(emailSchema),  userControllers.sendResetEmailPassword);
+
+userRouter.patch("/resetPassword/:token", middlewares.validateBody(passwordSchema), userControllers.resetPassword);
+
+

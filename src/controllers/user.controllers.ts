@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { userService } from "../services";
 import { UserReturn } from "../interfaces";
+import { emailUser, passwordUser } from "../interfaces/resetPassword.interface";
 
 const create = async (req: Request, res: Response): Promise<Response> => {
   const user: UserReturn = await userService.create(req.body);
@@ -32,7 +33,7 @@ const destroy = async (req: Request, res: Response): Promise<Response> => {
 };
 
 const sendResetEmailPassword = async (req: Request, res: Response) => {
-  const { email } = req.body;
+  const { email }: emailUser = req.body;
   await userService.sendResetEmailPassword(email);
 
   return res.json({
@@ -41,7 +42,7 @@ const sendResetEmailPassword = async (req: Request, res: Response) => {
 };
 
 const resetPassword = async (req: Request, res: Response) => {
-  const { password } = req.body;
+  const { password }: passwordUser = req.body;
   const { token } = req.params;
 
   await userService.resetPassword(password, token);
