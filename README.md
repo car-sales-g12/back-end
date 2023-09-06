@@ -28,38 +28,38 @@ site para venda de carros
 
 # Routes
 1. [**User Routes**](#user-routes)
-   - [POST /user]
-   - [GET /user/:id](#user-routes)
-   - [PATCH /user/:id](#user-routes)
-   - [PATCH /user/profileImg/:id](#user-routes)
-   - [DELETE /user/:id](#user-routes)
+   - POST /user
+   - GET /user/:id
+   - PATCH /user/:id
+   - PATCH /user/profileImg/:id
+   - DELETE /user/:id
 
-2. **Session Route**
-   - [POST /login](#session-route)
+2. [**Session Route**](#session-route)
+   - POST /login
 
-3. **Announcement Routes**
-   - [POST /announcement/:idUser](#announcement-routes)
-   - [GET /announcement/:idAnnouncement](#announcement-routes)
-   - [GET /announcement](#announcement-routes)
-   - [PATCH /announcement/:idAnnouncement](#announcement-routes)
-   - [DELETE /announcement/:idAnnouncement](#announcement-routes)
+3. [**Announcement Routes**](#announcement-routes)
+   - POST /announcement/:idUser
+   - GET /announcement/:idAnnouncement
+   - GET /announcement
+   - PATCH /announcement/:idAnnouncement
+   - DELETE /announcement/:idAnnouncement
 
-4. **Comment Routes**
-   - [POST /comment/:idUser/:idAnnouncement](#comment-routes)
-   - [GET /comment/:idAnnouncement](#comment-routes)
-   - [PATCH /comment/:idComment](#comment-routes)
-   - [DELETE /comment/:idComment](#comment-routes)
+4. [**Comment Routes**](#comment-routes)
+   - POST /comment/:idUser/:idAnnouncement
+   - GET /comment/:idAnnouncement
+   - PATCH /comment/:idComment
+   - DELETE /comment/:idComment
 
-5. **Image Routes**
-   - [POST /image/:idAnnouncement](#image-routes)
-   - [GET /image/:idAnnouncement](#image-routes)
-   - [DELETE /image/:idImage](#image-routes)
+5. [**Image Routes**](#image-routes)
+   - POST /image/:idAnnouncement
+   - GET /image/:idAnnouncement
+   - DELETE /image/:idImage
 
-6. **Address Routes**
-   - [POST /address/:idUser](#address-routes)
-   - [GET /address/:idUser](#address-routes)
-   - [PATCH /address/:idAddress](#address-routes)
-   - [DELETE /address/:idAddress](#address-routes)
+6. [**Address Routes**](#address-routes)
+   - POST /address/:idUser
+   - GET /address/:idUser
+   - PATCH /address/:idAddress
+   - DELETE /address/:idAddress
 
 <a name='user-routes'></a>
 ## User Router
