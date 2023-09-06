@@ -199,6 +199,7 @@ Create a new session (login).
 
 ---
 
+<a name='announcement-routes'></a>
 ## Announcement Router
 
 ### POST /announcement/:idUser
@@ -326,6 +327,7 @@ Delete the announcement.
 
 ---
 
+<a name='comment-routes'></a>
 ## Comment Router
 
 ### POST /comment/:idUser/:idAnnouncement
@@ -398,6 +400,7 @@ Delete a comment.
 
 ---
 
+<a name='image-routes'></a>
 ## Image Router
 
 ### POST /image/:idAnnouncement
@@ -431,6 +434,7 @@ Delete an image from an announcement.
 
 ---
 
+<a name='address-routes'></a>
 ## Address Router
 
 ### POST /address/:idUser
