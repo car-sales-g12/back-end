@@ -32,6 +32,13 @@ site para venda de carros
 
 ### POST /user
 Create a new user.
+**Request:**
+
+```json
+{
+  "email": "john@example.com",
+  "password": "securepassword"
+}
 
 ### GET /user/:id
 Retrieve user information by ID.
