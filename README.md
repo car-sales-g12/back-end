@@ -27,7 +27,39 @@ site para venda de carros
    > npm run dev
 
 # Routes
+1. **User Routes**
+   - [POST /user](#user-router-post-user)
+   - [GET /user/:id](#user-router-get-userid)
+   - [PATCH /user/:id](#user-router-patch-userid)
+   - [PATCH /user/profileImg/:id](#user-router-patch-userprofileimgid)
+   - [DELETE /user/:id](#user-router-delete-userid)
 
+2. **Session Route**
+   - [POST /login](#session-router-post-login)
+
+3. **Announcement Routes**
+   - [POST /announcement/:idUser](#announcement-router-post-announcementiduser)
+   - [GET /announcement/:idAnnouncement](#announcement-router-get-announcementidannouncement)
+   - [GET /announcement](#announcement-router-get-announcement)
+   - [PATCH /announcement/:idAnnouncement](#announcement-router-patch-announcementidannouncement)
+   - [DELETE /announcement/:idAnnouncement](#announcement-router-delete-announcementidannouncement)
+
+4. **Comment Routes**
+   - [POST /comment/:idUser/:idAnnouncement](#comment-router-post-commentiduseridannouncement)
+   - [GET /comment/:idAnnouncement](#comment-router-get-commentidannouncement)
+   - [PATCH /comment/:idComment](#comment-router-patch-commentidcomment)
+   - [DELETE /comment/:idComment](#comment-router-delete-commentidcomment)
+
+5. **Image Routes**
+   - [POST /image/:idAnnouncement](#image-router-post-imageidannouncement)
+   - [GET /image/:idAnnouncement](#image-router-get-imageidannouncement)
+   - [DELETE /image/:idImage](#image-router-delete-imageidimage)
+
+6. **Address Routes**
+   - [POST /address/:idUser](#address-router-post-addressiduser)
+   - [GET /address/:idUser](#address-router-get-addressiduser)
+   - [PATCH /address/:idAddress](#address-router-patch-addressidaddress)
+   - [DELETE /address/:idAddress](#address-router-delete-addressidaddress)
 ## User Router
 
 ### POST /user
