@@ -39,7 +39,7 @@ Create a new user.
   "email": "john@example.com",
   "password": "securepassword"
 }
-
+````
 ### GET /user/:id
 Retrieve user information by ID.
 
