@@ -32,6 +32,7 @@ site para venda de carros
 
 ### POST /user
 Create a new user.
+
 **Request:**
 
 ```json
