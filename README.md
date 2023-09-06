@@ -27,8 +27,8 @@ site para venda de carros
    > npm run dev
 
 # Routes
-1. **User Routes**
-   - [POST /user](#user-routes)
+1. **User Routes**(#user-routes)
+   - [POST /user]
    - [GET /user/:id](#user-routes)
    - [PATCH /user/:id](#user-routes)
    - [PATCH /user/profileImg/:id](#user-routes)
